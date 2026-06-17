@@ -1,0 +1,46 @@
+products = {
+    'Laptop': 990,
+    'Smartphone': 600,
+    'Tablet': 250,
+    'Headphones': 70,
+}
+print("-------------ITEMS-------------")
+for items in products.keys():
+    print(items)
+print("-------------ITEMS-------------")
+
+
+customer_item = input("What item do you want?: ")
+customer_item = customer_item.title()
+
+if customer_item in products:
+    price = products[customer_item]
+    discounted_price = price * 0.8
+    print(f"{customer_item} costs around ${price}")
+    print(f"You're discounted price is: ${discounted_price}")
+else:
+    print("Your item must be on the list")
+
+
+
+
+
+#THESE ARE MY TRIALS
+
+#for price in products.values():
+ #   discount = price * 0.8
+  #  item1 = list(products.keys())[0]
+  #  if customer_item == item1:
+   #     price1 = list(products.values())[0]
+    #    print(f"Laptop cost ${price1}")
+     #   print(f"Your discounted price (@ 20% off) is ${discount}")
+     #   break
+    #else:
+   #     print("Please choose on the list")
+
+
+
+#for price in products.values():
+ #  discount = price * 0.8
+   #  print(f"Your discounted price (@ 20% off) is ${discount}")
+  #  break
