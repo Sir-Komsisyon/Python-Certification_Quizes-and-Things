@@ -1,0 +1,19 @@
+import random
+
+head_result = 0
+tail_result = 0
+
+for game in range(1000):
+    coin=random.choice(["heads", "tails"])
+    print(f"{game+1}.{coin}")
+
+    if coin == "heads":
+        head_result += 1
+    if coin == "tails":
+        tail_result += 1
+
+print("------------RESULTS-------------")
+print(f"Heads: {head_result}")
+print(f"Tails: {tail_result}")
+
+
