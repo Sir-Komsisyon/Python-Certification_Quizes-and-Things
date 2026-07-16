@@ -1,0 +1,19 @@
+def quick_sort(lst):
+    # Base case: lists with 0 or 1 element are already sorted
+    if len(lst) <= 1:
+        return lst
+    
+    # 1. Choose a pivot (using the first element as per instructions)
+    pivot = lst[0]
+    
+    # 2. Partition the list into three sublists
+    less = [x for x in lst[1:] if x < pivot]
+    equal = [x for x in lst if x == pivot]
+    greater = [x for x in lst[1:] if x > pivot]
+    
+    # 3. Recursively sort sublists and concatenate results
+    return quick_sort(less) + equal + quick_sort(greater)
+
+# Example Usage:
+print(quick_sort([3, 6, 8, 10, 1, 2, 1])) 
+# Output: [1, 1, 2, 3, 6, 8, 10]   
