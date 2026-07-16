@@ -1,0 +1,39 @@
+def square_root_bisection(number, tolerance=1e-7, max_iterations=100):
+    # Handle negative numbers
+    if number < 0:
+        raise ValueError("Square root of negative number is not defined in real numbers")
+    
+    # Handle 0 and 1
+    if number == 0 or number == 1:
+        print(f"The square root of {number} is {number}")
+        return number
+    
+    # Initialize bounds
+    low = 0
+    high = max(1, number)
+    root = None
+    
+    # Iterative Bisection
+    for _ in range(max_iterations):
+        mid = (low + high) / 2
+        
+        # CORRECT CONVERGENCE CHECK: Compare interval width, not squared error
+        if abs(high - low) <= tolerance:
+            root = mid
+            break
+        
+        square = mid * mid
+        
+        # Narrow interval
+        if square > number:
+            high = mid
+        else:
+            low = mid
+            
+    # Output Result
+    if root is not None:
+        print(f"The square root of {number} is approximately {root}")
+        return root
+    else:
+        print(f"Failed to converge within {max_iterations} iterations")
+        return None   
