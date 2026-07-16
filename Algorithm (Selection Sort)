@@ -1,0 +1,24 @@
+def selection_sort(lst):
+    n = len(lst)
+    
+    # Iterate through the entire list except the last element
+    for i in range(n - 1):
+        # Assume the current position holds the minimum
+        min_index = i
+        
+        # Find the index of the actual minimum element in the remaining unsorted portion
+        for j in range(i + 1, n):
+            if lst[j] < lst[min_index]:
+                min_index = j
+        
+        # Swap only if the found minimum is not already in the correct position
+        # This fulfills the requirement to avoid unnecessary swaps
+        if min_index != i:
+            lst[i], lst[min_index] = lst[min_index], lst[i]
+            
+    return lst
+
+# Example Usage:
+data = [64, 25, 12, 22, 11]
+print(selection_sort(data))
+# Output: [11, 12, 22, 25, 64]   
