@@ -1,0 +1,32 @@
+def hanoi_solver(n):
+    # Initialize rods: source has all disks, target and auxiliary are empty
+    source = list(range(n, 0, -1))   # [n, n-1, ..., 1]
+    target = []
+    auxiliary = []
+    
+    # Store all states in a list of strings
+    states = []
+    
+    # Helper function to record the current state
+    def record_state():
+        states.append(f"{source} {auxiliary} {target}")
+    
+    # Recursive function to move disks
+    def move(n, src, tgt, aux):
+        if n > 0:
+            move(n-1, src, aux, tgt)        # move n-1 disks to auxiliary
+            tgt.append(src.pop())           # move the top disk
+            record_state()                  # record rods after the move
+            move(n-1, aux, tgt, src)        # move n-1 disks to target
+    
+    # Record the starting arrangement
+    record_state()
+    # Solve the puzzle
+    move(n, source, target, auxiliary)
+    
+    # Return all states joined by newlines
+    return "\n".join(states)
+
+
+# Example run
+print(hanoi_solver(3))
